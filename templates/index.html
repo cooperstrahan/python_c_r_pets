@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pets!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+</head>
+<style>
+    .add {
+        margin-top: 10px;
+    }
+    .table-wrapper-scroll-y {
+        display: block;
+        max-height: 200px;
+        overflow-y: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+</style>
+<body>
+    <div class="jumbotron-fluid">
+        <h1 class="text-center">All the Pets!</h1>
+        <div class="table-wrapper-scroll-y tb">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pet in all_pets %}
+                    <tr>
+                        <td>{{pet["id"]}}</td>
+                        <td>{{pet["name"]}}</td>
+                        <td>{{pet["type"]}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div> 
+        <div class="add">
+            <h1 class="text-center">Add a Pet</h1>
+            <form class="text-center" action="/create_pet" method="POST">
+                <p>Name <input type="text" name="name"></p>
+                <p>Type <input type="text" name="type"></p>
+                <input type="submit" value="Add"></p>
+            </form>
+        </div>  
+    </div>
+    
+</body>
+</html>
